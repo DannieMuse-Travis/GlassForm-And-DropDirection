@@ -3,13 +3,23 @@ import { useState } from "react"
 import {FiMenu} from "react-icons/fi"
 import GlobalButton from "../common/GlobalButton"
 import Globalbutton from "../common/GlobalButton"
-
+import {SiInstructure} from "react-icons/si"
+import {TbBrandNextjs,TbMessageCircle2} from "react-icons/tb"
+import {CiGlobe,CiWavePulse1} from "react-icons/ci"
+import {GrStorage} from "react-icons/gr"
 import {RiArrowDropDownLine,RiArrowDropUpLine} from "react-icons/ri"
+import HouseButton from "../common/HouseButton"
 
 
 
 
 const Header = () => {
+  
+  const [state,setState]=useState(false)
+
+  const Click=()=>{
+    setState(!state)
+  }
 
   const [show,setShow]=useState(false)
 
@@ -31,7 +41,54 @@ const Header = () => {
                  <h1>Vercel</h1>  
     </Holder>
     <NavHolder>
-    <Navs>Features</Navs>
+    <Navs onMouseOver={Click}
+    >Features
+     <Up>
+    <RiArrowDropDownLine/>
+  </Up>
+    </Navs >
+    {
+      state?
+    
+      (
+        <HouseCard>
+      
+ <Right>
+ <HouseButton
+                    cardIcon={<TbMessageCircle2 />}
+                    title='Previews'
+                    cardText='Zero config,more innovation'
+                 />
+                 <HouseButton
+                 cardIcon={<TbBrandNextjs/>}
+                 title='Next.Js'
+                 cardText='The native Next.js platform'/>
+                 <HouseButton
+                 cardIcon={<CiWavePulse1/>}
+                 title='analytics'
+                 cardText='Real-time insight,peak perfromance'
+                 />
+ </Right>
+                 <Left>
+                 <HouseButton
+                 cardIcon={<SiInstructure/>}
+                 title='infrastructure'
+                 cardText='Always fast,always online'
+                 />
+                 <HouseButton
+                 cardIcon={<CiGlobe/>}
+                 title='Edge function'
+                 cardText='Dyanmic pages,static speed'
+                 />
+                 <HouseButton
+                 cardIcon={<GrStorage/>}
+                 title='Storage'
+                 cardText='Serverless storage for the frontend'
+                 />
+                 </Left>
+    </HouseCard>
+      ):null
+    }
                   <Navs>Docs</Navs>
                   <Navs>Templates</Navs>
                   <Navs>Integrations</Navs>
@@ -92,6 +149,27 @@ const Header = () => {
 }
 
 export default Header
+
+const Up = styled.div``
+
+const Left = styled.div``
+
+const Right= styled.div``
+
+const HouseCard =  styled.div`
+
+background: rgba( 000, 000, 000, 0.05 );
+box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+backdrop-filter: blur( 6.5px );
+-webkit-backdrop-filter: blur( 6.5px );
+border-radius: 10px;
+border: 1px solid rgba( 255, 255, 255, 0.18 );
+padding:20px 20px;
+position:absolute;
+margin-top:300px;
+display:flex;
+border-radius:10px;
+`
 
 const Hold = styled.div`
 width: 88%;

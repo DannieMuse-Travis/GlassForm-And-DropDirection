@@ -31,6 +31,7 @@ border-radius: 7px;
 border: 1px solid lightgray;
 margin-right: 20px;
 margin: ${({margin})=> margin};
+cursor: pointer;
 
 @media screen and (max-width: 768px) {
         display: none;
